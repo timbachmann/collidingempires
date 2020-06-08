@@ -1,0 +1,27 @@
+.tab-pane:top *.tab-header-area {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0, 0 0 10;
+}
+
+.tab-header-background {
+    -fx-background-color: #2C2B2E;
+}
+
+.tab:selected .focus-indicator {
+    -fx-focus-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.tab:selected {
+    -fx-background-image: url("/images/server_screen/SelectedTab.png");
+    -fx-background-position: top;
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+}
+
+.tab {
+    -fx-background-image: url("/images/server_screen/UnselectedTab.png");
+    -fx-background-position: top;
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+}

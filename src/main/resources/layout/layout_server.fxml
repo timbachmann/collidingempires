@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="900" maxWidth="1600" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2C2B2E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="collidingempires.client.screens.ServerScreenController">
+    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2C2B2E;" />
+    <TabPane fx:id="tabPane" layoutX="60.0" layoutY="56.0" prefHeight="980.0" prefWidth="1800.0" style="-fx-background-color: #010002;" stylesheets="@tabPane.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="275.0" tabMinHeight="75.0" tabMinWidth="275.0">
+        <Tab style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/server_screen/home.png" />
+                </ImageView>
+            </graphic>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="857.0" prefWidth="1798.0">
+                <GridPane alignment="CENTER" layoutX="1.0" layoutY="7.0" prefHeight="879.0" prefWidth="1799.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <ImageView fitHeight="841.0" fitWidth="1682.0" pickOnBounds="true" preserveRatio="true">
+                        <GridPane.margin>
+                            <Insets left="25.0" top="15.0" />
+                        </GridPane.margin>
+                        <Image url="@../images/server_screen/ui_container_lobbys.png" />
+                    </ImageView>
+                    <ListView fx:id="lobbyList" fixedCellSize="100.0" maxHeight="600.0" maxWidth="670.0" onMouseClicked="#onLobbyListClick" prefHeight="600.0" prefWidth="670.0" stylesheets="@lobbyList.css">
+                        <GridPane.margin>
+                            <Insets left="120.0" top="100.0" />
+                        </GridPane.margin>
+                    </ListView>
+                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                        <GridPane.margin>
+                            <Insets />
+                        </GridPane.margin>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                            <ImageView fitHeight="81.0" fitWidth="505.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../images/server_screen/txt_createNew.png" />
+                            </ImageView>
+                            <TextField fx:id="newLobbyNameField" maxWidth="500.0" prefHeight="50.0" prefWidth="500.0" promptText="Name">
+                                <font>
+                                    <Font size="24.0" />
+                                </font>
+                                <VBox.margin>
+                                    <Insets top="40.0" />
+                                </VBox.margin>
+                            </TextField>
+                            <GridPane>
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="630.800048828125" minWidth="10.0" prefWidth="420.00004882812505" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="480.799951171875" minWidth="10.0" prefWidth="480.799951171875" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <VBox.margin>
+                                    <Insets top="70.0" />
+                                </VBox.margin>
+                                <Button fx:id="createLobby" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#createClicked" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
+                                    <graphic>
+                                        <ImageView fitHeight="105.0" fitWidth="456.0" pickOnBounds="true" preserveRatio="true">
+                                            <Image url="@../images/server_screen/btn_createNew.png" />
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </GridPane>
+                        </VBox>
+                        <Pane prefHeight="380.0" prefWidth="900.0">
+                            <VBox.margin>
+                                <Insets top="150.0" />
+                            </VBox.margin>
+                            <ImageView fitHeight="405.0" fitWidth="833.0" pickOnBounds="true" preserveRatio="true">
+                                <Image url="@../images/server_screen/ui_container_clients.png" />
+                            </ImageView>
+                            <ListView fx:id="clientList" layoutX="72.0" layoutY="118.0" prefHeight="210.0" prefWidth="710.0" style="-fx-background-color: #2e4558;" stylesheets="@clientList.css" />
+                        </Pane>
+                    </VBox>
+                </GridPane>
+            </AnchorPane>
+        </Tab>
+        <Tab style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/server_screen/leaderboard.png" />
+                </ImageView>
+            </graphic>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <ListView fx:id="leaderboardList" fixedCellSize="100.0" layoutX="210.0" layoutY="104.0" prefHeight="760.0" prefWidth="1400.0" stylesheets="@lobbyList.css" />
+                <HBox alignment="CENTER" layoutX="210.0" layoutY="40.0" prefHeight="64.0" prefWidth="1400.0" style="-fx-background-color: #121b22;">
+                    <Label fx:id="scoreListLabelName" prefHeight="53.0" prefWidth="205.0" text="Player Name" textFill="#d7d7d7">
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets right="450.0" />
+                        </HBox.margin>
+                    </Label>
+                    <Label fx:id="scoreListLabelTotal" text="Total Games Won" textFill="#d7d7d7">
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets left="450.0" />
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+            </AnchorPane>
+        </Tab>
+        <Tab style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/server_screen/playedGames.png" />
+                </ImageView>
+            </graphic>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <ListView fx:id="playedGamesList" fixedCellSize="100.0" layoutX="210.0" layoutY="104.0" onMouseClicked="#onGamesListClick" prefHeight="760.0" prefWidth="1400.0" stylesheets="@lobbyList.css" />
+                <HBox alignment="CENTER" layoutX="210.0" layoutY="40.0" prefHeight="64.0" prefWidth="1400.0" style="-fx-background-color: #121b22;">
+                    <Label fx:id="playedListLabelName" prefHeight="53.0" prefWidth="205.0" text="Lobby Name" textFill="WHITE">
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets right="410.0" />
+                        </HBox.margin>
+                    </Label>
+                    <Label fx:id="playedListLabelWinner" alignment="CENTER" text="Winner" textFill="WHITE">
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="playedListLabelStatus" alignment="CENTER_RIGHT" text="Status" textFill="WHITE">
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets left="530.0" />
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+            </AnchorPane>
+        </Tab>
+        <Tab style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/server_screen/serverChat.png" />
+                </ImageView>
+            </graphic>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <TextArea fx:id="chatDisplay" editable="false" layoutX="114.0" layoutY="74.0" prefHeight="708.0" prefWidth="576.0" promptText="Chat" stylesheets="@chat.css" />
+                <TextField fx:id="chatInput" layoutX="113.0" layoutY="795.0" prefHeight="70.0" prefWidth="576.0" promptText="Press Enter to send." stylesheets="@chat.css" />
+                <ImageView fitHeight="380.0" fitWidth="528.0" layoutX="900.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../images/server_screen/chatInstructions.png" />
+                </ImageView>
+            </AnchorPane>
+        </Tab>
+      <Tab style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/server_screen/settings.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="editName" fitHeight="48.0" fitWidth="48.0" layoutX="566.0" layoutY="76.0" onMouseClicked="#editNameClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/server_screen/edit.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nameLabel" layoutX="100.0" layoutY="72.0" text="Name: Tim" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="984.0" layoutY="73.0" text="Credits" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="credits" editable="false" layoutX="956.0" layoutY="138.0" prefHeight="696.0" prefWidth="788.0" stylesheets="@chat.css">
+                     <font>
+                        <Font size="21.0" />
+                     </font></TextArea>
+                  <Pane layoutX="100.0" layoutY="157.0" prefHeight="675.0" prefWidth="514.0" style="-fx-background-color: #273744;">
+                     <children>
+                        <Label layoutX="20.0" layoutY="10.0" prefHeight="53.0" prefWidth="85.0" text="Keys" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="92.0" text="Up" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="188.0" text="Down" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="281.0" text="Left" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="375.0" text="Right" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="470.0" text="Exit" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="40.0" layoutY="566.0" text="Click" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnUp" layoutX="200.0" layoutY="82.0" mnemonicParsing="false" onAction="#btnUp" prefHeight="77.0" prefWidth="250.0" text="Arrow Up">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDown" layoutX="200.0" layoutY="176.0" mnemonicParsing="false" onAction="#btnDown" prefHeight="77.0" prefWidth="250.0" text="Arrow Down">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnLeft" layoutX="200.0" layoutY="269.0" mnemonicParsing="false" onAction="#btnLeft" prefHeight="77.0" prefWidth="250.0" text="Arrow Left">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnRight" layoutX="200.0" layoutY="363.0" mnemonicParsing="false" onAction="#btnRight" prefHeight="77.0" prefWidth="250.0" text="Arrow Right">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnExit" layoutX="200.0" layoutY="458.0" mnemonicParsing="false" onAction="#btnExit" prefHeight="77.0" prefWidth="250.0" text="ESC">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnClick" layoutX="200.0" layoutY="552.0" mnemonicParsing="false" onAction="#btnClick" prefHeight="77.0" prefWidth="250.0" text="Mouse Left">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+    </TabPane>
+    <HBox alignment="CENTER" layoutX="1512.0" layoutY="60.0" prefHeight="80.0" prefWidth="348.0">
+        <Label fx:id="ipLabel" prefHeight="98.0" prefWidth="332.0" style="-fx-background-color: transparent;" text="Name: Tim" textFill="WHITE">
+           <font>
+               <Font size="48.0" />
+           </font>
+        </Label>
+        <ImageView fx:id="soundToggle" fitHeight="48.0" fitWidth="48.0" onMouseClicked="#toggleSound" pickOnBounds="true" preserveRatio="true">
+            <HBox.margin>
+                <Insets left="20.0" />
+            </HBox.margin>
+            <Image url="@../images/server_screen/volumeOn.png" />
+        </ImageView>
+    </HBox>
+</AnchorPane>

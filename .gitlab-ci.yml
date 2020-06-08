@@ -1,0 +1,25 @@
+image: openjdk:11
+
+stages:
+  - build
+  - test
+
+before_script:
+  - echo "Start CI! - Build only on master Branch!"
+
+job build:
+    stage: build
+    only: 
+    - master
+    allow_failure: false
+    script: 
+    - ./gradlew build-cs108
+    
+job test:
+    stage: test
+    script: 
+    - ./gradlew check 
+    - ./gradlew test
+
+after_script:
+  - echo "End CI!"

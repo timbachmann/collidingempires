@@ -1,0 +1,18 @@
+Icons: 	https://material.io/resources/icons/
+
+Graphics:
+    https://loudeyes.itch.io/battle-royale-fps-game-ui-asset-pack
+    https://www.hiclipart.com/free-transparent-background-png-clipart-itlzw
+	https://www.hiclipart.com/free-transparent-background-png-clipart-dxkaq
+	https://craftpix.net/freebies/free-tropical-medieval-city-2d-tileset/
+	https://craftpix.net/freebies/free-castle-2d-game-assets/
+	https://craftpix.net/freebies/free-2d-rpg-desert-tileset/
+	https://kenney.nl
+
+Sounds:
+    http://soundbible.com/857-Swords-Clashing.html
+	https://gamesounds.xyz/
+	http://soundbible.com/
+
+Music:
+    http://www.bensound.com

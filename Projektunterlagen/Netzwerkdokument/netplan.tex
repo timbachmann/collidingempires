@@ -1,0 +1,466 @@
+\documentclass[a4paper, 12pt, oneside, headsepline=.5pt,footsepline=.5pt]{scrartcl}
+
+%Schrift
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}  
+\usepackage{microtype} 
+
+%Layout
+\usepackage{geometry}      
+\geometry{top=25mm,left=25mm,right=25mm,bottom=20mm,headsep=4mm,footskip=10mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex}
+\usepackage[automark]{scrlayer-scrpage}  
+\clearpairofpagestyles        
+\ihead{}                   
+\chead{\leftmark}        
+\ohead{}                 
+\ifoot{}               
+\cfoot{\pagemark}           
+\ofoot{} 
+\usepackage[para]{footmisc}
+
+\title{Netzwerkkommunikation}
+\subtitle{Protokoll und Verhalten}
+\author{Raphael Kreft}
+\date{\today}
+\setlength{\parindent}{0px}
+
+\begin{document}
+%Titelseite
+\maketitle
+%Inhaltsverzeichnis
+\tableofcontents
+\clearpage
+%Setup
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Allgemeines Kommunikationsschema}
+Grundlage ist die Kommunikation über das TCP(Transport Control Protocol).
+Die Clients können sich mit dem Server verbinden, wobei auf diesem für jede Client Verbindung ein einzelner Thread gestartet wird, der diese verwaltet (Die Exekutor-Klasse). 
+Über diese Verbindungen werden die Im Protokoll festgelegten Sequenzen übertragen und dann auf dem Server bzw. Client verarbeitet.
+\newline
+Jeder Client verwaltet nur eine Verbindung zu dem jeweiligen Server.
+\newline
+Die Sequenzen werden so validiert, sodass nur Funktionalität aufgerufen werden kann, zu der Client und Server auch Zugriff benötigen. Z.B ist in Lobbys nur der Zugriff auf die in der Lobby wichtige Funktionalität möglich.
+
+\paragraph{\textbf{Der Präfix GET}}
+Ein Solcher Befehl im Protokoll fragt Änderungen bzw. Informationen beim Kommunikationspartner an. Bei dem der den Befehl erhält. Diese werden dann durch zurücksenden einer oder mehrerer SET Anweisungen auf dem ursprünglich anfragenden System ausgeführt.
+
+\paragraph{\textbf{Der Präfix SET}}: Ein solcher Befehl löst eine direkte Änderung durch einen Funktionsaufruf aus. Bei dem der den Befehl erhält. Es wird keine Antwort erwartet.
+
+\subsection{Befehlsübertragung}
+
+Die Sequenzen des Protokolls werden von den Argumenten mit einem Unterstrich \glqq \_\grqq getrennt, ein gesendeter Befehl sieht also folgendermaßen aus:
+\begin{center}
+\textbf{\large Befehl\_ Argument1\_ Argument2\_ ...\_ Argumentn}
+\end{center}
+
+\subsection{Validierung}
+Die Klasse \textit{Packager} entpackt und packt die zu sendenden oder gesendeten Sequenzen. Die Anzahl der Argumente ist im Protokoll festgelegt. Dabei werden genausoviele Argumente an den Unterstrichen getrennt wie nötig sind; Die restlichen Unterstriche gehen in das letzte Argument mit ein. Somit ist sichergestellt, dass die Anzahl der Argumente nicht das Maximum des Befehls überschreitet. außerdem prüft der \textit{Packager}, ob die richtige Anzahl erreicht wird, d.h. nicht zu wenig Argumente gesendet wurden.
+
+Vor der Ausführung eines jeden Befehls wird außerdem geprüft, ob der Befehl ausführbar ist bezogen auf den aktuellen Zustand des Servers, der Lobby oder des Spiels. Wenn nicht wird der Befehl nicht ausgeführt.
+
+
+\section{Kommunikation Im Servermenü}
+Verbindet sich ein Client mit einem Server, befindet er sich zunächst im Servermenü und ist keiner Lobby zugeteilt. Von dort aus kann er Lobbys verwalten und offene, laufende und abgeschlossene Spiele betrachten sowie laufenden Spielen zuschauen. Außerdem kann gechattet werden und dir rangliste betrachtet werden.
+
+\subsection{Aufrufbare Funktionalität auf dem Server durch den Client}
+
+\paragraph{\textbf SET-Anweisungen:}
+\begin{itemize}
+\item Nickname setzen
+\item Text in einen Chat senden
+\item Eine Lobby Erstellen
+\item Eine Lobby betreten
+\item Server verlassen
+\item Einem Spiel zuschauen
+\end{itemize}
+
+
+\subsection{Aufrufbare Funktionalität auf dem Client durch den Server}
+
+\paragraph{\textbf SET-Anweisungen:}
+\begin{itemize}
+\item Du bist im Servermenü
+\item Neuer Text in einem Chat
+\item Ein Neuer Client hat sich verbunden
+\item Ein Client hat den Server verlassen
+\item Ein Client hat seinen Nicknamen geändert
+\item Änderung auf der Rangliste!
+\item Ein neues abgeschlossenes Spiel auf dem Server!
+\item Eine Neue Lobby wurde erstellt
+\item Statusänderung einer Lobby
+\item Eine Lobby wurde gelöscht
+\item Dein Text wurde erfolgreich gesendet/oder nicht
+\item Du wurdest der Lobby xy hinzugefügt oder nicht! (geschafft? als Argument + warum)
+\end{itemize}
+
+
+\subsection{Protokoll Clientseite}
+
+{\large \textbf{MISV}(MenueInServerView)} \\
+\hspace{4ex} \textbf{Argumente:} {Nickname Anfangs vom Server vergeben} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass dieser sich erfolgreich verbunden hat und sich im Servermenü befindet.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Setzt die Scene und den Anfangsnicknamen}  \\
+\hspace{4ex} \textbf{Beispiel:} {MISV\_ initialerName} \\
+
+{\large \textbf{TXTR}(TextRecieve)} \\
+\hspace{4ex} \textbf{Argumente:} {privat/server/lobby, von wem, Nachricht} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass ein neuer Text gesendet wurde, wenn dieser unter den Empängern ist und im Richtigen Menü bzw Spiel um die Nachricht sehen zu können.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Updatet das Chatfenster}  \\
+\hspace{4ex} \textbf{Beispiel:} {TXTR\_ @tim\_ oli\_ hallo, TXTR\_ server\_ oli\_ hallo, TXTR\_ lobby\_ oli\_ hallo} \\
+
+{\large \textbf{NCON}(NewClientOnServer)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass sich ein neuer Client mit dem Server verbunden hat} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Liste von Clients und der benötigten Grafikelemente}  \\
+\hspace{4ex} \textbf{Beispiel:} {NCON\_ Matias} \\
+
+{\large \textbf{CLSV}(ClientLeftServer)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass ein anderer Client den Server verlassen hat} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Liste von Clients und der benötigten Grafikelemente}  \\
+\hspace{4ex} \textbf{Beispiel:} {CLSV\_ Matias} \\
+
+{\large \textbf{CCNN}(ClientChangedNickName)} \\
+\hspace{4ex} \textbf{Argumente:} {oldnickname, newnickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass ein anderer Client seinen Nicknamen geändert hat} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Clientinformation und der benötigten Grafikelemente}  \\
+\hspace{4ex} \textbf{Beispiel:} {CCNN\_ tim\_ derBeste} \\
+
+{\large \textbf{NHSE}(NewHighscoreEntry)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass es einen neuen Eintrag in der Highscoreliste gibt. Dies passiert wenn ein Spieler zum ersten mal ein Spiel gewinnt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Highscore-Liste und der benötigten Grafikelemente bei Bedarf} \\
+\hspace{4ex} \textbf{Beispiel:} {NHSE\_ tim} \\
+
+{\large \textbf{CHSE}(ChangeHighScorelistEntry)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass es eine Änderung in den Spielerleiszungen/Highscoreliste gibt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren des entsprechenden Highscorelisteneintrags(Siegeszahl + 1) und der benötigten Grafikelemente bei Bedarf} \\
+\hspace{4ex} \textbf{Beispiel:} {CHSE\_ tim} \\
+
+{\large \textbf{NFGA}(NewFinishedGame)} \\
+\hspace{4ex} \textbf{Argumente:} {Lobbyname, gewinnernickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass ein neues abgeschlossenes Spiel auf dem Server gibt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Liste von abgeschlossenen Spielen und der benötigten Grafikelemente} \\
+\hspace{4ex} \textbf{Beispiel:} {NFGA\_ lobby1\_ oli} \\
+
+{\large \textbf{NLOS}(NewLobbyOnServer)} \\
+\hspace{4ex} \textbf{Argumente:} {Lobbyname, anzahlspieler} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass es eine neue Lobby gibt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Liste von Lobbys und der benötigten Grafikelemente} \\
+\hspace{4ex} \textbf{Beispiel:} {NLOS\_ lobby2\_ 2} \\
+
+{\large \textbf{ALDS}(ALobbyDeletedonServer)} \\
+\hspace{4ex} \textbf{Argumente:} {Lobbyname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass eine Lobby gelöscht wurde} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Liste von Lobbys und der benötigten Grafikelemente} \\
+\hspace{4ex} \textbf{Beispiel:} {ALDS\_ lobby2} \\
+
+{\large \textbf{ALCS}(ALobbyChangedStatus)} \\
+\hspace{4ex} \textbf{Argumente:} {lobbyname, ingame?, anzahlspieler} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass eine Lobby Ihre Eigenschaften verändert. Also die Anzahl der Mitglieder oder, ob Sie sich im Spiel befindet, jeweils eins der Argumente leer lassen du nur eine Änderung auf Einmal gesendet wird} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der Information über Lobby und der benötigten Grafikelemente}  \\
+\hspace{4ex} \textbf{Beispiel:} {ALCS\_ true\_ , ALCS\_ \_ 2} \\
+*****Status****** \\
+{\large \textbf{TCMS}(TextChatMessageStatus)} \\
+\hspace{4ex} \textbf{Argumente:} {status(success or fail)} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem anfragenden Client mit, ob das Senden eines Textes geklappt hat} \\
+\hspace{4ex} \textbf{Funktionalität:} {Aktualisieren der ChatListen}  \\
+\hspace{4ex} \textbf{Beispiel:} {TCMS\_ fail} \\
+
+{\large \textbf{FTCL}(FailedToCrateLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {errormsg} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass das erstellen der Lobby niht geklappt hat und warum. Im Efolgsfall erfolgt Aktualisierung über NLOS} \\
+\hspace{4ex} \textbf{Funktionalität:} {Nutzer benachrichtigen und Aktualisieren der benötigten Grafikelemente} \\
+\hspace{4ex} \textbf{Beispiel:} {CWCN\_ neuerName} \\
+
+{\large \textbf{FTJL}(FailedToJoinLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass das Betreten einer Lobby nicht geklappt hat. Im Efolgsfall erfolgt Beitrittsmeldung YAIL} \\
+\hspace{4ex} \textbf{Funktionalität:} {Nutzer benachrichtigen und Aktualisieren der benötigten Grafikelemente} \\
+\hspace{4ex} \textbf{Beispiel:} {FTJL} \\
+
+{\large \textbf{YASP}(YouAreSpectating)} \\
+\hspace{4ex} \textbf{Argumente:} {-} \\
+\hspace{4ex} \textbf{Beschreibung:} {Teilt dem Client mit, dass der sich nun im Spectatormodus befindet.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Die Szene wird gesetzt und die Bedienelemente deaktiviert.} \\
+\hspace{4ex} \textbf{Beispiel:} {YASP} \\
+
+\subsection{Protokoll Serverseite} 
+{\large \textbf{CWJL}(ClientWantstoJoinLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {Lobbyname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client schickt hiermit eine Anfrage zum Betreten einer Lobby an den Server} \\
+\hspace{4ex} \textbf{Funktionalität:} {Prüfen auf Machbarkeit, wenn ja: Daten aktualisieren und Clients informieren. Wenn nicht: Fehlermeldung an anfragenden Client senden} \\
+\hspace{4ex} \textbf{Beispiel:} {CWJL\_ meineLobby} \\
+
+{\large \textbf{CWCL}(ClientWantstoCreateLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {Lobbyname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Client schickt Anfrage zum erstellen einer neuen Lobby} \\
+\hspace{4ex} \textbf{Funktionalität:} {Prüfen auf Machbarkeit, wenn ja, Daten aktualisieren, Clients informieren. Wenn nicht: Fehlermeldung an anfragenden Client} \\
+\hspace{4ex} \textbf{Beispiel:} {CWCL\_ meineLobby} \\
+
+{\large \textbf{CWLS}(ClientWantstoLeaveServer)} \\
+\hspace{4ex} \textbf{Argumente:} {} \\
+\hspace{4ex} \textbf{Beschreibung:} {Client teilt mit, dass er den Server verlässt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Daten und Objekte anpassen/löschen und alle clients Informieren, socket schliessen (clientsocket wartet bis server den Socket schliesst)} \\
+\hspace{4ex} \textbf{Beispiel:} {CWLS} \\
+
+{\large \textbf{CWST}(ClientWantstoSendText)} \\
+\hspace{4ex} \textbf{Argumente:} {privat/server/lobby, message} \\
+\hspace{4ex} \textbf{Beschreibung:} {Client schickt Anfrage zum versenden eines Textes} \\
+\hspace{4ex} \textbf{Funktionalität:} {Prüfen auf Machbarkeit, wenn ja, Daten aktualisieren, Clients informieren. Wenn nicht: Fehlermeldung an anfragenden Client} \\
+\hspace{4ex} \textbf{Beispiel:} {CWST\_ user@tim\_ hallo, CWST\_ server\_ hallo, CWST\_ lobby\_ hallo} \\
+
+{\large \textbf{CWCN}(ClientWantstoChangeNickname)} \\
+\hspace{4ex} \textbf{Argumente:} {newnickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Client schickt Anfrage zum Ändern seines Nicknames} \\
+\hspace{4ex} \textbf{Funktionalität:} {Prüfen ob einzigartig: wenn der Name nicht eindeutig ist wird ein ähnlicher, einzigartiger gefunden und gesetzt. Alle Clients werden über die Änderung informiert} \\
+\hspace{4ex} \textbf{Beispiel:} {CWCN\_ neuerName} \\
+
+{\large \textbf{CWCN}(ClientWantstoSpectate)} \\
+\hspace{4ex} \textbf{Argumente:} {Lobbyname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Client schickt Anfrage zum Beobachten eines laufenden Spiels} \\
+\hspace{4ex} \textbf{Funktionalität:} {Prüfen ob Gültig(Lobby muss im Spiel sein). und ausführen der entprechenden Logik, die den Client das Spiel beobachten lässt} \\
+\hspace{4ex} \textbf{Beispiel:} {CWTS\_ testlobby} \\
+
+\section{Kommunikation in Lobby}
+Betritt ein Client die Lobby oder kehrt zu ihr zurück aus einem Spiel, so wird der Server SET- Anweisungen senden um den Status der Lobby, also die vorhandenen Mitglieder, den Status zur Spielbereitschaft aller Clients und den bisherigen Chat beim Client gesamtzuaktualisieren. Danach kann der Client Anfragen an den Server schicken und wird stetig über Änderungen des Lobbyzustandes und seiner Variabeln aktualisiert. Die Daten die Im Servermenü wichtig waren interessieren nicht mehr und werden vom Server auch nicht mehr auf den Clients aktualisiert.
+
+\subsection{Aufrufbare Funktionalität auf dem Server durch den Client}
+
+\paragraph{\textbf SET-Anweisungen:}
+\begin{itemize}
+\item Text in einen Chat Senden(Argument an wen)
+\item Lobby verlassen
+\item Toggle Ready
+\end{itemize}
+
+
+\subsection{Aufrufbare Funktionalität auf dem Client durch den Server}
+
+\paragraph{\textbf SET-Anweisungen:}
+\begin{itemize}
+\item Neuer Text in Chat
+\item Ein Client hat die Lobby verlassen
+\item Ein Client hat die Lobby betreten
+\item Ein Client hat seinen Bereitschaftsstatus geändert
+\item Das Spiel Startet 
+\item Lobby erfolgreich verlassen
+\item Du bist in der Lobby!
+\end{itemize}
+
+
+\subsection{Protokoll Clientseite}
+{\large \textbf{ACLL}(AClientLefttheLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass ein Client die Lobby verlassen hat inder man sich befindet} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Lobbydaten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {ACLL\_ tim} \\
+
+{\large \textbf{ACJL}(AClientJoinedtheLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass ein Client die Lobby betreten hat inder man sich befindet} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Lobbydaten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {ACJL\_ Raphael} \\
+
+{\large \textbf{ACCS}(AClientChangeditsStatus)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass ein Client seinen Spielfertigkeitsstatus geändert hat inder man sich befindet} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Lobbydaten des betreffendenClients und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {ACSS\_ Oli} \\
+
+{\large \textbf{YAIL}(YouAreInaLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {lobbyname} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, man sich in der Lobby befindet und sich auf die Gesamtaktualisierung einstellen kann} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client bereitet sich auf Empfang der Daten vor (GUI und Datenobjekte)} \\
+\hspace{4ex} \textbf{Beispiel:} {YAIL\_ lobby1} \\
+
+{\large \textbf{TGST}(TheGameStarts)} \\
+\hspace{4ex} \textbf{Argumente:} {} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass das Spiel der Lobby beginnt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert teilt es dem user mit setzt die Scene} \\
+\hspace{4ex} \textbf{Beispiel:} {TGST} \\
+Das Empfangen von Texten wird mit schon deklarierten Befehlen geregelt!
+****Status**** \\
+{\large \textbf{YLTL}(YouLeftTheLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass du erfolgreich die Lobby verlassen hast} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client wartet auf Benachrichtigung im Servermenü zu sein} \\
+\hspace{4ex} \textbf{Beispiel:} {YLTL} \\
+
+Der Textchat Status wird durch schon beschriebene Befehle geregelt!
+
+\subsection{Protokoll Serverseite} 
+{\large \textbf{CWTR}(ClientWantstotoggleReady)} \\
+\hspace{4ex} \textbf{Argumente:} {} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client teilt mit sienen Spielbereitschaftsstatus ändern zu wollen.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Server ändert Status und informiert alle Clients, aktualisiereung erfolgt auch für anfragenden Client} \\
+\hspace{4ex} \textbf{Beispiel:} {CWTR} \\
+
+{\large \textbf{CWLL}(ClientWantstoLeaveLobby)} \\
+\hspace{4ex} \textbf{Argumente:} {} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client stellt die Anfrage die aktuelle Lobby zu verlassen, auch wenn er inGame ist} \\
+\hspace{4ex} \textbf{Funktionalität:} {Server prüft Machbarkeit, ändert Daten und informiert alle Clients in der Lobby, sowie den anfragenden mit YLTL, Reaktion je nachdem ob Lobby inGame oder nicht.} \\
+\hspace{4ex} \textbf{Beispiel:} {CWLL} \\
+
+\newpage
+\section{Kommunikation Im Spiel}
+Während dem Spiel verwaltet der Server den Spielverlauf, er teilt den Clients mit Wer am Zug ist, prüft die Gültigkeit der Spielzüge und Verteilt jede Spielbewegung an alle an dem Spiel teilnehmenden Clients. Beim betreten des Spiels und bei Verbindungsunterbruch wird die Spielinformation auf jedem Client gesamtaktualisiert. Ist man als Zuschauer in einem Spiel, so kriegt man alle Informationen zum Spiel, kann jedoch keine Operationen ausführen, bis auf den Zuschauermodus zu verlassen.
+
+\subsection{Aufrufbare Funktionalität auf dem Server durch den Client}
+
+\paragraph{\textbf GET-Anweisungen:}
+\begin{itemize}
+\item Ich möchte die Runde beenden
+\item Mögliche Felder zum Bewegen?
+\item ich möchte diesen Spielzug ausführen
+\item Gamechat Text senden
+\item Ich möchte das Spiel verlassen!
+\item Ich möchte schummeln!
+\end{itemize}
+
+
+
+\subsection{Aufrufbare Funktionalität auf dem Client durch den Server}
+\paragraph{\textbf SET-Anweisungen:}
+\begin{itemize}
+\item Neuer Text im Chat
+\item Spielzug ist gültig/ungültig
+\item Ein Neues Objekt auf der Spielkarte
+\item Objekt von Spielkarte entfernt
+\item Änderung des Münzkontos
+\item Änderung des Einkommens pro Runde
+\item Spieler XY Am Zug
+\item Restzeit des Zuges
+\item Ein Feld auf der Karte wechselt den Besitzer
+\item Spieler XY hat spiel verlassen
+\item Das Spiel ist beendet
+\item Neue Spielkarte
+\item Spiel erfolgreich verlassen
+\item Neuer Spieler ist am Zug
+\item Diese Felder sind für die Bewegung möglich
+\item Spieler hat Spiel verlassen!
+\item Du bist im Spiel!
+\end{itemize}
+
+
+\subsection{Protokoll Clientseite}
+
+Auch Hier wird die Textchatfunktionalität über schon deklarierte Befehle geregelt!! \\
+
+{\large \textbf{NEMA}(NewMap)} \\
+\hspace{4ex} \textbf{Argumente:} {sequenz von 0/1 ob begehbar} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server schickt die neue Spielkarte(an alle Clients)} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Spieldaten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {NEMA\_ 01111100011011100....} \\
+
+{\large \textbf{FCOW}(FieldChangesOWner)} \\
+\hspace{4ex} \textbf{Argumente:} {FeldID, an wen} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass ein Spielfeld den Besitzer gewechselt hat} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Spielfelddaten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {FCOW\_ 101\_ tim} \\
+
+{\large \textbf{NOOM}(NewObjectOnMap)} \\
+\hspace{4ex} \textbf{Argumente:} {FeldID, was(Gebäude, Einheit), level} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass es ein neues Objekt auf dem Spielfeld gibt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Spielfelddaten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {NOOM\_ 100\_ knight\_ 1, NOOM\_ 101\_ tower\_  (Tower haben noch keine Level)} \\
+
+{\large \textbf{OOMR}(ObjectOnMapRemoved)} \\
+\hspace{4ex} \textbf{Argumente:} {FeldID} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass es eine Veränderung bei einem Objekt auf dem Spielfeld gibt} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Spielfelddaten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {OOMR\_ 200} \\
+
+{\large \textbf{YCBC}(YourCoinBalanceChanged)} \\
+\hspace{4ex} \textbf{Argumente:} {newBalance} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, sich dein Münzkontostand geändert hat. Dies Geschieht zu Rundenbeginn und beim Kauf von Einheiten} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Münzkontodaten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {YCBC\_ 15 (Du hast nun 15 Münzen)} \\
+
+{\large \textbf{BCNR}(BalanceChangeNextRound)} \\
+\hspace{4ex} \textbf{Argumente:} {Balance-Change} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, wie sich das Konto Anfang der nächsten Runde zum aktuellen Zeitpunkt ändern würde.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert die Daten und Grafikelemente des GUI} \\
+\hspace{4ex} \textbf{Beispiel:} {BCNR\_ -20} \\
+
+{\large \textbf{NPOT}(NewPlayerOnTurn)} \\
+\hspace{4ex} \textbf{Argumente:} {nickname(wer)} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, dass ein bestimmter Spieler am Zug ist oder du selber.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client teilt dies dem nutzer mit.} \\
+\hspace{4ex} \textbf{Beispiel:} {NPOT\_ tim} \\
+
+{\large \textbf{GEND}(GameEND)} \\
+\hspace{4ex} \textbf{Argumente:} {wer hat gewonnen(nickname)} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt mit, das Spiel vorbei ist und wer der Gewinner ist} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client aktualisiert Teilt dies dem Nutzer mit und Wartet auf Rückkehr in Lobbybefehl} \\
+\hspace{4ex} \textbf{Beispiel:} {GEND\_ Matias} \\
+
+{\large \textbf{LTOT}(LeftTimeOfTurn)} \\
+\hspace{4ex} \textbf{Argumente:} {Zeit} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt die restliche Zeit eines Spielzugs eines Spielers mit. } \\
+\hspace{4ex} \textbf{Funktionalität:} {Client synchrinisiert mit eigenem Timer!} \\
+\hspace{4ex} \textbf{Beispiel:} {LTOT\_ 2016} \\
+
+{\large \textbf{PFOR}(PossibleFieldsOfRequest)} \\
+\hspace{4ex} \textbf{Argumente:} {FeldIDs als liste mit , getrennt} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Server teilt dem Client die Möglichen Felder einer Bau- oder Bewegungs-Operation mit} \\
+\hspace{4ex} \textbf{Funktionalität:} {Client umrandet die Begehbaren Felder} \\
+\hspace{4ex} \textbf{Beispiel:} {PFOR\_ 001,102,103,104} \\
+
+\subsection{Protokoll Serverseite} 
+
+{\large \textbf{CWFT}(ClientWantstoFinishTurn)} \\
+\hspace{4ex} \textbf{Argumente:} {} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client fragt an, ob er die Runde beenden kann} \\
+\hspace{4ex} \textbf{Funktionalität:} {Server prüft Machbarkeit, aktualisiert Speildaten und Informiert alle Clients über weiteren Spielverlauf. Wenn nicht: Statusmeldung SCET an Client der anfragt} \\
+\hspace{4ex} \textbf{Beispiel:} {CWFT} \\
+
+{\large \textbf{CWRB}(ClientWantstoRequestBuy)} \\
+\hspace{4ex} \textbf{Argumente:} {was? -> Kampfeinheit oder Gebäüde} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client Fragt beim Server an auf welchen Feldern er eine Einheit oder ein Gebäude plazieren könnte.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Server prüft welche Felder für diesen Spieler zum Setzten einer Einheit/Gebäude in Frage kommen und gibt diese an den Client zurück.} \\
+\hspace{4ex} \textbf{Beispiel:} {CWRB\_ knight, CWRB\_ tower} \\
+
+{\large \textbf{CWRM}(ClientWantstoRequestMove)} \\
+\hspace{4ex} \textbf{Argumente:} {welche Einehit? -> FeldId wo Einheit ist} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client Fragt beim Server an auf welche felder sich die Einheit Bewegen kann.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Server prüft welche Felder für diesen Spieler zum Setzten bewegen der fraglichen Einheit in Frage kommen und gibt diese an den Client zurück.} \\
+\hspace{4ex} \textbf{Beispiel:} {CWRM\_ 101} \\
+
+{\large \textbf{CWPI}(ClientWantstoPlaceItem)} \\
+\hspace{4ex} \textbf{Argumente:} {was? -> Kampfeinheit oder Gebäüde, wo? -> FeldId} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client Fragt das Bauen eines Gebäudes/einer Einheit oder das Upate einer solchen an.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Veranlasst bei Gültigkeit der Operation das Setzten/Aufrüsten. Das Aufrüsten passiert, wenn das Feld was angefragt ist, von einer Einheit besetzt ist und das argument knight gegeben wurde} \\
+\hspace{4ex} \textbf{Beispiel:} {CWPI\_ knight\_ 100, CWPI\_ tower\_ 101} \\
+
+{\large \textbf{CWTM}(ClientWantstoMove)} \\
+\hspace{4ex} \textbf{Argumente:} {von wo, nach wo (FeldIds)} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client Fragt eine Bewegung einer Einheit an.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Server Prüft ob die Bewegung Gültig ist, und die Einheit dem Spieler gehört und führt Sie dann aus. Alle Clients werden informiert.} \\
+\hspace{4ex} \textbf{Beispiel:} {CWTM\_ 001\_ 004} \\
+
+{\large \textbf{CWTC}(ClientWantstoCheat)} \\
+\hspace{4ex} \textbf{Argumente:} {Welcher Cheat (0 oder 1)} \\
+\hspace{4ex} \textbf{Beschreibung:} {Der Client Fragt an zu schummeln.} \\
+\hspace{4ex} \textbf{Funktionalität:} {Server prüft die Gültigkeit(nur möglich während eigenem Zug).\\ Cheat 1: Erhöht das Gold um 100, entfernt alle eigenen Einheiten und der nächste Spieler ist am Zug)\\
+Cheat 2: Zahle 50 Gold, entferne eine Farm von jedem Gegner, nächster am Zug} \\
+\hspace{4ex} \textbf{Beispiel:} {CWTC} \\
+
+Leave Game wurde durch Leave Lobby ersetzt, da eine Lobby nur ein Spiel hostet!
+
+\section{Verbindungsunterbruch}
+
+\paragraph{Clientseitiger Umgang}
+Der Nutzer wird darauf hingewiesen, dass der Server nicht erreichbar war und auf den connect to server screen weitergeleitet.
+
+\paragraph{Serverseitiger Umgang}
+Im Servermenü, werden die anderen Clients in diesem Menü über die Änderung mittels SET Kommando informiert.
+In der Lobby das gleiche und wenn die Lobby leer wäre, so wird diese gelöscht. In dem Spiel bleibt der werden alle Gebäude und Felder des Spielers gelöscht (So als hätte er das Spiel verlassen) erhalten und er wird einfach übersprungen. Nur noch ein Spieler: Gewinnt automatisch! Kein Spieler: Spiel Ende!
+\end{document}

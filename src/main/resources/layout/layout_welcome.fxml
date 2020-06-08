@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2C2B2E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="collidingempires.client.screens.WelcomeScreenController">
+   <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2C2B2E;" />
+   <ImageView accessibleRole="BUTTON" fitHeight="663.0" fitWidth="912.0" pickOnBounds="true" preserveRatio="true"
+              AnchorPane.bottomAnchor="773.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="878.0"
+              AnchorPane.topAnchor="185.0">
+      <Image url="@../images/welcome_screen/txt_gameTitle.png"/>
+   </ImageView>
+   <Button fx:id="btnConnectToServer" alignment="CENTER" contentDisplay="CENTER" layoutX="361.0" layoutY="458.0" onMouseClicked="#onClickConnect" prefHeight="105.0" prefWidth="456.0" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="105.0" fitWidth="456.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/welcome_screen/btn_connectToServer.png"/>
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button fx:id="btnQuit" alignment="CENTER" contentDisplay="CENTER" layoutX="500.0" layoutY="618.0" onMouseClicked="#onQuit" prefHeight="105.0" prefWidth="159.0" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="105.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/welcome_screen/btn_quit.png"/>
+         </ImageView>
+      </graphic>
+   </Button>
+   <ImageView fitHeight="744.0" fitWidth="967.0" layoutX="872.8" layoutY="283.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../images/welcome_screen/img_hexagon.png"/>
+   </ImageView>
+</AnchorPane>

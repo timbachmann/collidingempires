@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Projektplan" company="" webLink="http://" view-date="2020-03-22" view-index="0" gantt-divider-location="296" resource-divider-location="300" version="2.8.10" locale="de">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Vorgang" width="147" order="0"/>
+        <field id="tpd4" name="Anfang" width="73" order="1"/>
+        <field id="tpd5" name="Ende" width="72" order="2"/>
+        <option id="color.recent"><![CDATA[#ff9900 #99ff99 #99ccff #ff0000 #ccccff #ffff33 #000000 #cccccc #3333ff #00ff33]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Ressource" width="206" order="0"/>
+        <field id="1" name="Rolle" width="90" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="62" name="Phase 1" color="#ccccff" meeting="false" start="2020-02-24" duration="17" complete="6" thirdDate="2020-02-24" thirdDate-constraint="0" expand="false">
+            <depend id="49" type="2" difference="0" hardness="Strong"/>
+            <task id="51" name="Teambesprechung 1" color="#021707" meeting="false" start="2020-02-24" duration="1" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Das Team trifft sich und bespricht das Projekt]]></notes>
+                <depend id="1" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="1" name="Spielkonzept festlegen" color="#ff0000" meeting="false" start="2020-02-25" duration="2" complete="100" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true">
+                <depend id="2" type="2" difference="0" hardness="Strong"/>
+                <depend id="23" type="2" difference="0" hardness="Strong"/>
+                <depend id="24" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="22" name="Arbeitsumgebung einrichten" color="#99ccff" meeting="false" start="2020-02-25" duration="1" complete="0" thirdDate="2020-02-27" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Git-repository und IntelliJ für unser Projekt einrichten]]></notes>
+            </task>
+            <task id="23" name="Softwareanforderungen festlegen und notieren" color="#ff0000" meeting="false" start="2020-02-27" duration="2" complete="0" thirdDate="2020-02-27" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Die genauen Anforderungen unseres Spiels festlegen und aufschreiben]]></notes>
+                <depend id="122" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="24" name="Mockup für die Präsentation erstellen" color="#99ccff" meeting="false" start="2020-02-27" duration="2" complete="0" thirdDate="2020-02-27" thirdDate-constraint="0" expand="true"/>
+            <task id="120" name="Dokumentation" color="#3333ff" meeting="false" start="2020-02-26" duration="11" complete="0" thirdDate="2020-02-26" thirdDate-constraint="0" expand="true">
+                <task id="118" name="gitignore-file aktualisieren" color="#99ccff" meeting="false" start="2020-02-26" duration="1" complete="0" thirdDate="2020-02-24" thirdDate-constraint="0" expand="true"/>
+                <task id="2" name="Projektplan bis Meilenstein 1 schreiben" color="#99ccff" meeting="false" start="2020-02-27" duration="2" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true">
+                    <depend id="122" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="146" name="Spielregeln und Spielkonzept dokumentieren und commiten" color="#99ccff" meeting="false" start="2020-02-27" duration="2" complete="0" thirdDate="2020-02-24" thirdDate-constraint="0" expand="true">
+                    <depend id="150" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="150" name="Neuer Diaryeintrag schreiben" color="#99ccff" meeting="false" start="2020-02-29" duration="1" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true"/>
+                <task id="122" name="Anforderungsanalyse schreiben" color="#ff0000" meeting="false" start="2020-02-29" duration="1" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true">
+                    <depend id="25" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="27" name="Anforderungsanalyse überarbeiten" color="#ff9900" meeting="false" start="2020-03-02" duration="1" complete="0" thirdDate="2020-02-27" thirdDate-constraint="0" expand="true">
+                    <depend id="28" type="2" difference="0" hardness="Strong"/>
+                    <depend id="129" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="129" name="Manual schreiben" color="#99ccff" meeting="false" start="2020-03-03" duration="2" complete="0" thirdDate="2020-03-02" thirdDate-constraint="0" expand="true"/>
+                <task id="75" name="Projektplan bis Meilenstein 3 erweitern" color="#99ccff" meeting="false" start="2020-03-04" duration="3" complete="0" thirdDate="2020-03-04" thirdDate-constraint="0" expand="true"/>
+                <task id="154" name="Diaryeintrag schreiben" color="#99ccff" meeting="false" start="2020-03-07" duration="1" complete="0" thirdDate="2020-02-29" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="25" name="Teambesprechung 2" color="#120202" meeting="false" start="2020-03-01" duration="1" complete="0" thirdDate="2020-02-27" thirdDate-constraint="0" expand="true">
+                <depend id="27" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="63" name="Mögliche Ressourcen für das Spiel suchen und dokumentieren" color="#cccccc" meeting="false" start="2020-03-04" duration="3" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" priority="3" expand="true"/>
+            <task id="371" name="Server und Client anlegen" color="#ff0000" meeting="false" start="2020-03-03" duration="1" complete="0" thirdDate="2020-02-28" thirdDate-constraint="0" expand="true">
+                <depend id="28" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="28" name="Netzwerkprotokol" color="#ff0000" meeting="false" project="true" start="2020-03-04" duration="3" complete="0" thirdDate="2020-03-04" thirdDate-constraint="1" expand="true">
+                <task id="53" name="Netzwerkprotokol für Kommunikation im Servermenü schreiben" color="#ff0000" meeting="false" start="2020-03-04" duration="1" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Noch ohne Befehlsnamen und Implementation]]></notes>
+                    <depend id="376" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="376" name="Netzwerkprotokol für Kommunikation in der Lobby schreiben" color="#ff0000" meeting="false" start="2020-03-05" duration="1" complete="0" thirdDate="2020-03-05" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Noch ohne Befehlsnamen und Implementation]]></notes>
+                    <depend id="29" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="29" name="Netzwerkprotokol für Kommunikation im Spiel schreiben" color="#ff0000" meeting="false" start="2020-03-06" duration="1" complete="0" thirdDate="2020-03-04" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Noch ohne Befehlsnamen und Implementation]]></notes>
+                    <depend id="31" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="385" name="Netzwerkprotokol für den Umgang mit Verbindungsunterbrüchen schreiben" color="#ff0000" meeting="false" start="2020-03-04" duration="1" complete="0" thirdDate="2020-03-04" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="388" name="Projektstruktur im source-File festlegen" color="#ff0000" meeting="false" start="2020-03-08" duration="1" complete="0" thirdDate="2020-03-08" thirdDate-constraint="0" expand="true">
+                <depend id="31" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="31" name="Präsentation" color="#ffff33" meeting="false" start="2020-03-10" duration="2" complete="0" thirdDate="2020-03-10" thirdDate-constraint="0" expand="true">
+                <depend id="49" type="2" difference="0" hardness="Strong"/>
+                <task id="32" name="Präsentation schreiben" color="#ffff33" meeting="false" start="2020-03-10" duration="1" complete="0" thirdDate="2020-03-10" thirdDate-constraint="0" expand="true">
+                    <depend id="33" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="33" name="Präsentation als Gruppe üben" color="#ffff33" meeting="false" start="2020-03-11" duration="1" complete="0" thirdDate="2020-03-11" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+        <task id="49" name="Meilenstein 1" color="#3333ff" meeting="true" start="2020-03-12" duration="0" complete="0" thirdDate="2020-02-22" thirdDate-constraint="0" expand="true">
+            <depend id="165" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="165" name="Phase 2" color="#ccccff" meeting="false" start="2020-03-12" duration="11" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="false">
+            <depend id="191" type="2" difference="0" hardness="Rubber"/>
+            <task id="189" name="Netzwerkprotokol" color="#000000" meeting="false" start="2020-03-12" duration="11" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                <task id="200" name="Schnittstellen für Servermenü sind definiert" color="#ff0000" meeting="false" start="2020-03-12" duration="2" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Die Schnittstellen der wichtigen Funktionen sind definiert, damit die Client/Server arbeit an den Verschiedenen Levels (Servermenü, Lobbymenü, Loginmenü beginnen kann]]></notes>
+                    <depend id="169" type="2" difference="0" hardness="Strong"/>
+                    <depend id="194" type="2" difference="0" hardness="Strong"/>
+                    <depend id="209" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="420" name="Verbundene Clients können angezeigt werden" color="#8cb6ce" meeting="false" start="2020-03-12" duration="1" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Es gibt eine Funktion welche es ermöglicht eine Liste der verbundenen Clients aufzurufen]]></notes>
+                </task>
+                <task id="194" name="Serverkommunikationsbefehle implementieren" color="#ff0000" meeting="false" start="2020-03-14" duration="4" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Die Kommunikationsbefehle für den Servermenü sind implementiert und funktionieren]]></notes>
+                    <depend id="196" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="598" name="Klassendiagramm für die In-Game Elemente schreiben" color="#99ff99" meeting="false" start="2020-03-20" duration="1" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                    <depend id="600" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="600" name="Klassendiagramm mit Commands des Netzwerkprotokols ergänzen" color="#99ff99" meeting="false" start="2020-03-21" duration="1" complete="0" thirdDate="2020-03-21" thirdDate-constraint="0" expand="true"/>
+                <task id="196" name="Servermenü testen" color="#ff9900" meeting="false" start="2020-03-18" duration="1" complete="0" thirdDate="2020-03-17" thirdDate-constraint="0" expand="true">
+                    <depend id="168" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="168" name="Netzwerkprotokol überprüfen und korrigieren" color="#ff0000" meeting="false" start="2020-03-19" duration="2" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                    <depend id="198" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="198" name="Netzwerkprotokol testen" color="#ff9900" meeting="false" start="2020-03-21" duration="1" complete="0" thirdDate="2020-03-20" thirdDate-constraint="0" expand="true">
+                    <depend id="305" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="305" name="Leserlichkeit überprüfen" color="#99ccff" meeting="false" start="2020-03-22" duration="1" complete="0" thirdDate="2020-03-21" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="169" name="Einfacher Chat implementieren" meeting="false" start="2020-03-14" duration="8" complete="0" expand="true">
+                <depend id="315" type="2" difference="0" hardness="Strong"/>
+                <task id="209" name="Client" color="#000000" meeting="false" start="2020-03-14" duration="5" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                    <depend id="225" type="1" difference="0" hardness="Strong"/>
+                    <task id="215" name="Log in Informationen können im Client eingegeben werden" color="#ff0000" meeting="false" start="2020-03-14" duration="1" complete="0" thirdDate="2020-03-13" thirdDate-constraint="0" expand="true">
+                        <depend id="180" type="2" difference="0" hardness="Strong"/>
+                        <depend id="236" type="2" difference="0" hardness="Strong"/>
+                        <depend id="277" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="236" name="Spieler können vom Client aus den globalen Chat aufrufen" color="#00ff33" meeting="false" start="2020-03-15" duration="2" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                        <notes><![CDATA[Clients können Nachrichten schreiben und abschicken vom chat aus]]></notes>
+                        <depend id="242" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="242" name="Ein Lobby und Instanzchat ist möglich" color="#00ff33" meeting="false" start="2020-03-17" duration="2" complete="0" thirdDate="2020-03-16" thirdDate-constraint="0" expand="true">
+                        <depend id="285" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                </task>
+                <task id="277" name="Login/out Tests und fixes" color="#ff9900" meeting="false" start="2020-03-16" duration="1" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true"/>
+                <task id="225" name="Server" color="#000000" meeting="false" start="2020-03-14" duration="4" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                    <task id="431" name="Server kann vom Client Log in-Informationen entgegennehmen" color="#ff0000" meeting="false" start="2020-03-14" duration="1" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                        <depend id="227" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="227" name="Mehrere Log in sind möglich" color="#ff0000" meeting="false" start="2020-03-15" duration="1" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                        <notes><![CDATA[Beliebig viele Clients können mit dem Server verbunden sein, und der Server kann alle Clients auflisten welche momentan verbunden sind]]></notes>
+                        <depend id="172" type="2" difference="0" hardness="Strong"/>
+                        <depend id="180" type="2" difference="0" hardness="Strong"/>
+                        <depend id="232" type="2" difference="0" hardness="Strong"/>
+                        <depend id="277" type="2" difference="0" hardness="Strong"/>
+                    </task>
+                    <task id="232" name="Alle Clients im Server können im Chat miteinander kommunizieren" color="#ff0000" meeting="false" start="2020-03-16" duration="2" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                        <notes><![CDATA[Chatnachrichten aus den Clients werden vom Server angenommen und global verbreitet]]></notes>
+                    </task>
+                </task>
+                <task id="285" name="Globalchat testen und fixen" color="#ff9900" meeting="false" start="2020-03-19" duration="1" complete="0" thirdDate="2020-03-18" thirdDate-constraint="0" expand="true">
+                    <depend id="246" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="246" name="Basic chat funktioniert mit Nickname und Zeitanzeige" color="#00ff33" meeting="false" start="2020-03-21" duration="1" complete="0" thirdDate="2020-03-18" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="564" name="QA" color="#ff9900" meeting="false" start="2020-03-20" duration="3" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                <task id="570" name="Log4j v2 ins Projekt implementieren und eine einfache Konfiguration einbauen" color="#ff0000" meeting="false" start="2020-03-20" duration="1" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                    <depend id="567" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="567" name="Logger Configuration anpassen" color="#ff9900" meeting="false" start="2020-03-21" duration="1" complete="0" thirdDate="2020-03-12" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Loggerkonfiguration für jedes Pakett festlegen, erstellt 2 logs: einer auf TRACE-Level und ein anderer auf ERROR-Level. ERROR logs werden auch auf der Konsole gezeigt]]></notes>
+                    <depend id="576" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="576" name="Den Code mit Logstatements füllen" color="#ff9900" meeting="false" start="2020-03-22" duration="1" complete="0" thirdDate="2020-03-22" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="180" name="Nickname" color="#00ff33" meeting="false" start="2020-03-16" duration="4" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                <depend id="301" type="2" difference="0" hardness="Strong"/>
+                <task id="172" name="Nicknamesystem implementieren" color="#99ff99" meeting="false" start="2020-03-16" duration="2" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Spieler können ein Nickname wählen welcher zu ihrem Client verbunden wird]]></notes>
+                    <depend id="185" type="2" difference="0" hardness="Strong"/>
+                    <depend id="295" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="295" name="Nicknames sind veränderlich" color="#99ff99" meeting="false" start="2020-03-18" duration="1" complete="0" thirdDate="2020-03-16" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Nicknames können beim Log in gewählt werden und verändert]]></notes>
+                    <depend id="185" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="185" name="Nicknames sind Einzigartig" color="#99ff99" meeting="false" start="2020-03-19" duration="1" complete="0" thirdDate="2020-03-15" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Keine zwei Clients können den gleichen Nickname wählen]]></notes>
+                    <depend id="187" type="1" difference="0" hardness="Strong"/>
+                </task>
+                <task id="187" name="Nicknames werden vorgeschlagen" color="#99ff99" meeting="false" start="2020-03-19" duration="1" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Falls ein Nickname gewählt wird, welches es schon gibt, werden neue Nicknames vorgeschlagen]]></notes>
+                </task>
+            </task>
+            <task id="301" name="Nicknamesystem testen" color="#ff9900" meeting="false" start="2020-03-20" duration="1" complete="0" thirdDate="2020-03-18" thirdDate-constraint="0" expand="true">
+                <depend id="246" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="315" name="Prüfen ob das Program auch auf andere OS funktioniert" color="#ff0000" meeting="false" start="2020-03-22" duration="1" complete="0" thirdDate="2020-03-20" thirdDate-constraint="0" expand="true"/>
+            <task id="320" name="Präsentation und Slides vorbereiten" color="#ffff33" meeting="false" start="2020-03-21" duration="2" complete="0" thirdDate="2020-03-21" thirdDate-constraint="0" expand="true"/>
+            <task id="323" name="Code überprüfen" color="#99ff99" meeting="false" start="2020-03-21" duration="1" complete="0" thirdDate="2020-03-21" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="191" name="Meilenstein 2" color="#3333ff" meeting="true" start="2020-03-23" duration="0" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+            <depend id="216" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="216" name="Phase 3" color="#ccccff" meeting="false" start="2020-03-23" duration="14" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="false">
+            <task id="218" name="Broadcast command implementieren" color="#99ff99" meeting="false" start="2020-03-23" duration="2" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                <depend id="219" type="2" difference="0" hardness="Strong"/>
+                <depend id="220" type="2" difference="0" hardness="Strong"/>
+                <depend id="354" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="219" name="Der Buildscript funktioniert und ergibt ein ausführbares jar-file" color="#99ff99" meeting="false" start="2020-03-25" duration="1" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true"/>
+            <task id="220" name="Testen ob alle Befehle in der Command Line richtig ausgeführt werden" color="#ff9900" meeting="false" start="2020-03-25" duration="1" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                <depend id="330" type="2" difference="0" hardness="Strong"/>
+                <depend id="361" type="2" difference="0" hardness="Strong"/>
+                <depend id="588" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="588" name="Commandlineparameter anpassen" color="#ff0000" meeting="false" start="2020-03-26" duration="1" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true"/>
+            <task id="324" name="Netzwerkprotokolcode überarbeiten" color="#ff0000" meeting="false" start="2020-03-23" duration="2" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                <depend id="220" type="2" difference="0" hardness="Strong"/>
+                <depend id="224" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="221" name="Dokumentation" color="#3333ff" meeting="false" start="2020-03-24" duration="12" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                <task id="222" name="Diaryeinträge schreiben" color="#99ccff" meeting="false" start="2020-03-24" duration="1" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                    <depend id="362" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="223" name="Manual überarbeiten" color="#99ccff" meeting="false" start="2020-03-26" duration="2" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true"/>
+                <task id="362" name="Projektplan überarbeiten" color="#99ccff" meeting="false" start="2020-03-25" duration="2" complete="0" thirdDate="2020-03-24" thirdDate-constraint="0" expand="true"/>
+                <task id="224" name="Netzwerkprotokoldokument überarbeiten" color="#99ccff" meeting="false" start="2020-03-25" duration="2" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true"/>
+                <task id="513" name="Diaryeintrag schreiben" color="#99ccff" meeting="false" start="2020-03-30" duration="2" complete="0" thirdDate="2020-03-16" thirdDate-constraint="0" expand="true"/>
+                <task id="594" name="QA Konzept entwerfen" color="#99ff99" meeting="false" start="2020-03-30" duration="2" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                    <depend id="591" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="591" name="QA Dokument schreiben" color="#99ccff" meeting="false" start="2020-04-01" duration="2" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                    <depend id="605" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="605" name="JUnit-Tests für die wichtigsten features schreiben" color="#ff9900" meeting="false" start="2020-04-03" duration="2" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="325" name="Spiellogik" color="#000000" meeting="false" start="2020-03-23" duration="10" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                <task id="446" name="Grundlogik festlegen" color="#ff0000" meeting="false" start="2020-03-23" duration="1" complete="0" thirdDate="2020-03-14" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Wie sehen die Runden aus, was ist möglich in diesen Runden]]></notes>
+                    <depend id="326" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="326" name="Logik für Spielfelder und Map entwerfen" color="#ff0000" meeting="false" start="2020-03-24" duration="1" complete="0" thirdDate="2020-03-24" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Spielmap in Felder unterteilen, Stats für diese Felder festlegen (Goldgeneration, Gebäude auf dem Feld, Einheiten auf dem Feld, Zugehörigkeit des Felds)
+]]></notes>
+                    <depend id="328" type="2" difference="0" hardness="Strong"/>
+                    <depend id="439" type="2" difference="0" hardness="Strong"/>
+                    <depend id="484" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="484" name="Random Map generator implementieren" color="#ff0000" meeting="false" start="2020-03-25" duration="1" complete="0" thirdDate="2020-03-25" thirdDate-constraint="0" expand="true">
+                    <depend id="482" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="439" name="Logik für Einheiten und Gebäuden entwerfen" color="#ff0000" meeting="false" start="2020-03-25" duration="1" complete="0" thirdDate="2020-03-25" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Typ der Einheit/Gebäude, Position der Einheit, Lebenspunkte?, Angriff/Verteidigungspunkte, Goldkosten usw.]]></notes>
+                </task>
+                <task id="328" name="Grundmechaniken zur Interaktion festlegen" color="#ff0000" meeting="false" start="2020-03-25" duration="2" complete="0" thirdDate="2020-03-25" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Bewegung, Angriff, Bauen, Interaktion zwischen Einheiten und Felder + Einheiten und Einheiten soll festgelegt werden]]></notes>
+                    <depend id="339" type="2" difference="0" hardness="Strong"/>
+                    <depend id="351" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="339" name="Funktionelle Mechaniken implementieren" color="#ff0000" meeting="false" start="2020-03-27" duration="5" complete="0" thirdDate="2020-03-27" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Die Logik welche über die letzten Tagen festgelegt wurde, wird als Struktur implementiert, noch ohne GUI]]></notes>
+                    <depend id="348" type="2" difference="0" hardness="Strong"/>
+                    <depend id="490" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="348" name="Gamelogik testen" color="#ff9900" meeting="false" start="2020-04-01" duration="1" complete="0" thirdDate="2020-03-29" thirdDate-constraint="0" expand="true"/>
+                <task id="351" name="Gamelogik erweitern" color="#cccccc" meeting="false" start="2020-03-27" duration="2" complete="0" thirdDate="2020-03-27" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Falls Zeit ist, und die Implementierung gut verläuft, überlegen wir wie wir das Spiel spannender gestalten könnten und auf unsere vorgegebenen Mechaniken aufbauen können]]></notes>
+                </task>
+            </task>
+            <task id="330" name="GUI" color="#000000" meeting="false" start="2020-03-26" duration="10" complete="0" thirdDate="2020-03-26" thirdDate-constraint="0" expand="true">
+                <task id="332" name="Chat GUI designen" color="#99ff99" meeting="false" start="2020-03-26" duration="1" complete="0" thirdDate="2020-03-26" thirdDate-constraint="0" expand="true">
+                    <depend id="343" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="454" name="Main menu GUI implementieren" color="#99ff99" meeting="false" start="2020-03-26" duration="1" complete="0" thirdDate="2020-03-26" thirdDate-constraint="0" expand="true">
+                    <depend id="343" type="2" difference="0" hardness="Strong"/>
+                    <depend id="463" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="463" name="Alle menus und Fenster des Clients designen" color="#99ff99" meeting="false" start="2020-03-27" duration="2" complete="0" thirdDate="2020-03-26" thirdDate-constraint="0" expand="true">
+                    <notes><![CDATA[Startscreen, Log in, Hometab, Highscoretab, Played Games Tab, Lobby]]></notes>
+                    <depend id="474" type="2" difference="0" hardness="Strong"/>
+                    <depend id="479" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="474" name="Playedgames Tab GUI implementieren" color="#ff0000" meeting="false" start="2020-03-29" duration="2" complete="0" thirdDate="2020-03-29" thirdDate-constraint="0" expand="true"/>
+                <task id="479" name="Lobby GUI implementieren" color="#ff0000" meeting="false" start="2020-03-29" duration="2" complete="0" thirdDate="2020-03-29" thirdDate-constraint="0" expand="true">
+                    <depend id="490" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="343" name="Chat GUI Version 1 implementieren" color="#99ff99" meeting="false" start="2020-03-27" duration="2" complete="0" thirdDate="2020-03-27" thirdDate-constraint="0" expand="true">
+                    <depend id="365" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="365" name="Chat GUI im Main Menu testen" color="#ff9900" meeting="false" start="2020-03-29" duration="1" complete="0" thirdDate="2020-03-29" thirdDate-constraint="0" expand="true">
+                    <depend id="369" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="369" name="Whisper chat implementieren" color="#99ff99" meeting="false" start="2020-03-30" duration="2" complete="0" thirdDate="2020-03-30" thirdDate-constraint="0" expand="true"/>
+                <task id="490" name="InGame GUI implementieren" color="#ff0000" meeting="false" start="2020-04-01" duration="4" complete="0" thirdDate="2020-03-31" thirdDate-constraint="0" expand="true">
+                    <depend id="493" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="482" name="Map designen" color="#99ff99" meeting="false" start="2020-03-26" duration="1" complete="0" thirdDate="2020-03-26" thirdDate-constraint="0" expand="true">
+                    <depend id="480" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="480" name="Einheiten und Gebäuden designen" color="#99ff99" meeting="false" start="2020-03-27" duration="1" complete="0" thirdDate="2020-03-27" thirdDate-constraint="0" expand="true">
+                    <depend id="487" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="487" name="HUD designen" color="#99ff99" meeting="false" start="2020-03-28" duration="1" complete="0" thirdDate="2020-03-28" thirdDate-constraint="0" expand="true">
+                    <depend id="490" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="493" name="InGame Testen" color="#ff9900" meeting="false" start="2020-04-05" duration="1" complete="0" thirdDate="2020-03-23" thirdDate-constraint="0" expand="true">
+                <depend id="309" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="356" name="Statusanzeige" color="#000000" meeting="false" start="2020-03-25" duration="4" complete="0" thirdDate="2020-03-15" thirdDate-constraint="0" expand="true">
+                <task id="354" name="Games werden gelistet" color="#ff0000" meeting="false" start="2020-03-25" duration="2" complete="0" thirdDate="2020-03-24" thirdDate-constraint="0" expand="true">
+                    <depend id="359" type="2" difference="0" hardness="Strong"/>
+                    <depend id="361" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="359" name="Gamestatus wird zu jedem Game gelistet" color="#ff0000" meeting="false" start="2020-03-27" duration="2" complete="0" thirdDate="2020-03-26" thirdDate-constraint="0" expand="true">
+                    <depend id="474" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="361" name="Verbundene Clients werden angezeigt" color="#ff0000" meeting="false" start="2020-03-27" duration="1" complete="0" thirdDate="2020-03-26" thirdDate-constraint="0" expand="true">
+                    <depend id="369" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+        </task>
+        <task id="309" name="Meilenstein 3" color="#3333ff" meeting="true" start="2020-04-06" duration="0" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true">
+            <depend id="421" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="421" name="Phase 4" color="#ccccff" meeting="false" start="2020-04-06" duration="14" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true">
+            <task id="424" name="GUI" meeting="false" start="2020-04-06" duration="7" complete="0" expand="true">
+                <task id="517" name="Animationen designen" color="#99ff99" meeting="false" start="2020-04-06" duration="3" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true"/>
+                <task id="429" name="Animationen implementieren" color="#ff0000" meeting="false" start="2020-04-09" duration="3" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true">
+                    <depend id="522" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="522" name="Animationen überprüfen" color="#ff9900" meeting="false" start="2020-04-12" duration="1" complete="0" thirdDate="2020-04-12" thirdDate-constraint="0" expand="true"/>
+                <task id="529" name="Highscore GUI implementieren" color="#ff0000" meeting="false" start="2020-04-07" duration="2" complete="0" thirdDate="2020-04-07" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="554" name="Sound" meeting="false" start="2020-04-06" duration="3" complete="0" expand="true">
+                <task id="557" name="Soundeffekte für jede Aktion auswählen" color="#99ff99" meeting="false" start="2020-04-06" duration="2" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true">
+                    <depend id="563" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="559" name="Musik und Hintergrundssound auswählen" color="#99ff99" meeting="false" start="2020-04-06" duration="1" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true">
+                    <depend id="563" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="563" name="Musik und Soundeffekte im Game implementieren" color="#ff0000" meeting="false" start="2020-04-08" duration="1" complete="0" thirdDate="2020-04-08" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="527" name="Games werden in einer Highscore Liste gespeichert und sortiert" color="#ff0000" meeting="false" start="2020-04-06" duration="1" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true">
+                <depend id="529" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="534" name="Regeln können nicht gebrochen werden" color="#ff0000" meeting="false" start="2020-04-11" duration="2" complete="0" thirdDate="2020-04-06" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Keine unmögliche Spielzüge sind möglich]]></notes>
+                <depend id="426" type="2" difference="0" hardness="Strong"/>
+                <depend id="611" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="426" name="UnitTesting Server-Pakett" color="#ff9900" meeting="false" start="2020-04-13" duration="2" complete="0" thirdDate="2020-04-20" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Alle Hauptfeatures des Games werden extensiv getestet]]></notes>
+                <depend id="607" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="607" name="UnitTesting ingame-Paket" color="#ff9900" meeting="false" start="2020-04-15" duration="4" complete="0" thirdDate="2020-04-15" thirdDate-constraint="0" expand="true">
+                <depend id="624" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="624" name="UnitTesting Server-net-paket" color="#ff9900" meeting="false" start="2020-04-19" duration="1" complete="0" thirdDate="2020-04-19" thirdDate-constraint="0" expand="true"/>
+            <task id="611" name="UnitTesting Client-Screens-paket" color="#ff9900" meeting="false" start="2020-04-13" duration="2" complete="0" thirdDate="2020-04-13" thirdDate-constraint="0" expand="true">
+                <depend id="615" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="615" name="UnitTesting Client-utils-paket" color="#ff9900" meeting="false" start="2020-04-15" duration="2" complete="0" thirdDate="2020-04-15" thirdDate-constraint="0" expand="true">
+                <depend id="620" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="620" name="UnitTesting Client-net-paket" color="#ff9900" meeting="false" start="2020-04-17" duration="1" complete="0" thirdDate="2020-04-17" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="311" name="Meilenstein 4" color="#3333ff" meeting="true" start="2020-04-27" duration="0" complete="0" thirdDate="2020-04-27" thirdDate-constraint="0" expand="true"/>
+        <task id="540" name="Phase 5" color="#ccccff" meeting="false" start="2020-04-27" duration="7" complete="0" thirdDate="2020-04-27" thirdDate-constraint="0" expand="false">
+            <task id="541" name="Outreach" color="#99ccff" meeting="false" start="2020-04-27" duration="2" complete="0" thirdDate="2020-04-27" thirdDate-constraint="0" expand="true">
+                <depend id="549" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="542" name="Command Line-Befehle testen" color="#ff9900" meeting="false" start="2020-04-27" duration="2" complete="0" thirdDate="2020-04-27" thirdDate-constraint="0" expand="true">
+                <depend id="547" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="545" name="GUI überprüfen" color="#ff9900" meeting="false" start="2020-04-27" duration="1" complete="0" thirdDate="2020-04-27" thirdDate-constraint="0" expand="true"/>
+            <task id="547" name="Gamelogik vervollständigen" color="#99ff99" meeting="false" start="2020-04-29" duration="2" complete="0" thirdDate="2020-04-27" thirdDate-constraint="0" expand="true">
+                <depend id="551" type="2" difference="0" hardness="Strong"/>
+                <depend id="553" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="549" name="Manual ist vollständig" color="#99ccff" meeting="false" start="2020-04-29" duration="1" complete="0" thirdDate="2020-04-27" thirdDate-constraint="0" expand="true"/>
+            <task id="551" name="Netzwerkprotokoldokument ist vollständig und implementiert im Source code" color="#99ccff" meeting="false" start="2020-05-01" duration="2" complete="0" thirdDate="2020-05-01" thirdDate-constraint="0" expand="true">
+                <depend id="552" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="552" name="Gameplayvideo aufnehmen" color="#ffff33" meeting="false" start="2020-05-03" duration="1" complete="0" thirdDate="2020-05-03" thirdDate-constraint="0" expand="true"/>
+            <task id="553" name="Alle Unit-Tests sind bestanden" color="#ff9900" meeting="false" start="2020-05-01" duration="1" complete="0" thirdDate="2020-05-01" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="312" name="Meilenstein 5" color="#3333ff" meeting="true" start="2020-05-13" duration="0" complete="0" thirdDate="2020-05-13" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="Tim" function="Default:0" contacts="" phone=""/>
+        <resource id="1" name="Raphael" function="Default:0" contacts="" phone=""/>
+        <resource id="2" name="Oli" function="Default:0" contacts="" phone=""/>
+        <resource id="3" name="Matias" function="Default:0" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="1" resource-id="0" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="22" resource-id="0" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="24" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="63" resource-id="0" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="31" resource-id="0" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="150" resource-id="0" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="129" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="154" resource-id="0" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="25" resource-id="0" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="388" resource-id="0" function="Default:0" responsible="true" load="10.0"/>
+        <allocation task-id="209" resource-id="0" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="320" resource-id="0" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="323" resource-id="0" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="330" resource-id="0" function="Default:0" responsible="false" load="60.0"/>
+        <allocation task-id="325" resource-id="0" function="Default:0" responsible="false" load="40.0"/>
+        <allocation task-id="220" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="588" resource-id="0" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="426" resource-id="0" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="611" resource-id="0" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="607" resource-id="0" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="615" resource-id="0" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="620" resource-id="0" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="624" resource-id="0" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="1" resource-id="1" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="22" resource-id="1" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="63" resource-id="1" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="31" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="200" resource-id="1" function="Default:0" responsible="true" load="40.0"/>
+        <allocation task-id="118" resource-id="1" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="25" resource-id="1" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="371" resource-id="1" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="28" resource-id="1" function="Default:0" responsible="false" load="70.0"/>
+        <allocation task-id="189" resource-id="1" function="Default:0" responsible="false" load="30.0"/>
+        <allocation task-id="225" resource-id="1" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="180" resource-id="1" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="301" resource-id="1" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="315" resource-id="1" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="320" resource-id="1" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="356" resource-id="1" function="Default:0" responsible="false" load="30.0"/>
+        <allocation task-id="325" resource-id="1" function="Default:0" responsible="false" load="40.0"/>
+        <allocation task-id="221" resource-id="1" function="Default:0" responsible="false" load="30.0"/>
+        <allocation task-id="218" resource-id="1" function="Default:0" responsible="true" load="40.0"/>
+        <allocation task-id="426" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="611" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="607" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="615" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="620" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="624" resource-id="1" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="1" resource-id="2" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="22" resource-id="2" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="23" resource-id="2" function="Default:0" responsible="true" load="100.0"/>
+        <allocation task-id="27" resource-id="2" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="63" resource-id="2" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="31" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="122" resource-id="2" function="Default:0" responsible="true" load="50.0"/>
+        <allocation task-id="25" resource-id="2" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="209" resource-id="2" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="320" resource-id="2" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="277" resource-id="2" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="330" resource-id="2" function="Default:0" responsible="false" load="60.0"/>
+        <allocation task-id="325" resource-id="2" function="Default:0" responsible="false" load="40.0"/>
+        <allocation task-id="219" resource-id="2" function="Default:0" responsible="true" load="400.0"/>
+        <allocation task-id="426" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="611" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="607" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="615" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="620" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="624" resource-id="2" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="1" resource-id="3" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="2" resource-id="3" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="22" resource-id="3" function="Default:0" responsible="false" load="10.0"/>
+        <allocation task-id="63" resource-id="3" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="31" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="75" resource-id="3" function="Default:0" responsible="true" load="30.0"/>
+        <allocation task-id="25" resource-id="3" function="Default:0" responsible="false" load="100.0"/>
+        <allocation task-id="28" resource-id="3" function="Default:0" responsible="false" load="30.0"/>
+        <allocation task-id="189" resource-id="3" function="Default:0" responsible="false" load="30.0"/>
+        <allocation task-id="225" resource-id="3" function="Default:0" responsible="false" load="50.0"/>
+        <allocation task-id="285" resource-id="3" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="180" resource-id="3" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="320" resource-id="3" function="Default:0" responsible="false" load="20.0"/>
+        <allocation task-id="356" resource-id="3" function="Default:0" responsible="false" load="30.0"/>
+        <allocation task-id="325" resource-id="3" function="Default:0" responsible="false" load="40.0"/>
+        <allocation task-id="221" resource-id="3" function="Default:0" responsible="false" load="30.0"/>
+        <allocation task-id="222" resource-id="3" function="Default:0" responsible="true" load="40.0"/>
+        <allocation task-id="362" resource-id="3" function="Default:0" responsible="true" load="20.0"/>
+        <allocation task-id="426" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="611" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="607" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="615" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="620" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
+        <allocation task-id="624" resource-id="3" function="Default:0" responsible="false" load="25.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

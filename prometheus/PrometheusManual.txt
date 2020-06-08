@@ -1,0 +1,13 @@
+The Server exports the following Metrics:
+
+    - connected_clients
+    - connection_requests_total
+    - number_of_lobbies
+    - number_of_finishedGames
+    - request_latency (Just data when an executor lives)
+    - requests_size_bytes (Just data when a client is connected)
+
+The Server uses a simple HTTP-Exporter on Port: 1234
+Just download prometheus, unpack it and use our config file: prometheus/prometheus.yml
+
+To use Grafana set it up and use our Dashboard file: prometheus/CollidingEmpiresServer_Grafana.json

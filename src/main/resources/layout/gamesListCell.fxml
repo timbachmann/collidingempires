@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="cellPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="gamesNameLabel" layoutX="14.0" prefHeight="100.0" prefWidth="580.0" text="Played Game">
+      <font>
+         <Font size="36.0" />
+      </font>
+      <padding>
+         <Insets left="20.0" />
+      </padding>
+   </Label>
+   <Label fx:id="gamesWinnerLabel" layoutX="594.0" prefHeight="100.0" prefWidth="491.0" text="Winner: Tim">
+      <font>
+         <Font size="36.0" />
+      </font>
+      <padding>
+         <Insets left="20.0" right="20.0" />
+      </padding>
+   </Label>
+   <Label fx:id="gamesStatusLabel" alignment="CENTER_RIGHT" layoutX="1133.0" layoutY="1.0" prefHeight="100.0" prefWidth="213.0" text="OPEN">
+      <font>
+         <Font size="36.0" />
+      </font>
+      <padding>
+         <Insets right="20.0" />
+      </padding>
+   </Label>
+   <ImageView fx:id="spectate" fitHeight="100.0" fitWidth="70.0" layoutX="1063.0" layoutY="16.0" pickOnBounds="true"
+              preserveRatio="true" visible="false">
+      <Image url="@../images/server_screen/spectate.png"/>
+   </ImageView>
+</Pane>

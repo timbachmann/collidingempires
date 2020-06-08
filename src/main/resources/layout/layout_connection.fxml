@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="900" maxWidth="1600" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2C2B2E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="collidingempires.client.screens.ConnectionScreenController">
+   <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2C2B2E;" />
+   <Button fx:id="btnConnect" alignment="CENTER" contentDisplay="CENTER" layoutX="583.0" layoutY="758.0" onMouseClicked="#onClickConnect" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="105.0" fitWidth="456.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/connection_screen/btn_connect.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="56.0" onMouseClicked="#onBack" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="105.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/connection_screen/btn_back.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <ImageView fitHeight="67.0" fitWidth="794.0" layoutX="113.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+      <viewport>
+         <Rectangle2D minX="1920.0" minY="1080.0" />
+      </viewport>
+      <Image url="@../images/connection_screen/txt_connectToServer.png" />
+   </ImageView>
+   <VBox layoutX="117.0" layoutY="434.0" prefWidth="587.0">
+      <TextField fx:id="ipField" prefHeight="60.0" promptText="IP">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="portField" prefHeight="60.0" promptText="Port" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="usernameField" prefHeight="60.0" promptText="Username">
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+   </VBox>
+   <ImageView fitHeight="744.0" fitWidth="967.0" layoutX="872.8" layoutY="283.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@../images/welcome_screen/img_hexagon.png"/>
+   </ImageView>
+</AnchorPane>

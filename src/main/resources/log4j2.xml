@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="CoreConfig" status="ERROR">
+    <Properties>
+        <Property name="loggingPattern">[%d{MM-dd HH:mm:ss.SSS}][%-5level][%t] %C{1} - %msg%n</Property>
+        <Property name="basePath">logs/</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${loggingPattern}"/>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+        <RollingFile name="Trace" fileName="${basePath}trace.log" filePattern="${basePath}%d{yyyy-MM-dd-hh}-%.log">
+            <PatternLayout pattern="${loggingPattern}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="3000 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+        <RollingFile name="Error" fileName="${basePath}error.log" filePattern="${basePath}%d{yyyy-MM-dd-hh}-%.log">
+            <PatternLayout pattern="${loggingPattern}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="3000 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+            <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="collidingempires.server" level="TRACE" additivity="false">
+            <AppenderRef ref="Trace"/>
+        </Logger>
+        <Logger name="collidingempires.client" level="TRACE" additivity="false">
+            <AppenderRef ref="Trace"/>
+        </Logger>
+        <Logger name="collidingempires" level="TRACE" additivity="false">
+            <AppenderRef ref="Trace"/>
+        </Logger>
+        <Logger name="collidingempires.client.net" level="TRACE" additivity="false">
+            <AppenderRef ref="Trace"/>
+        </Logger>
+        <Logger name="collidingempires.server.net" level="TRACE" additivity="false">
+            <AppenderRef ref="Trace"/>
+        </Logger>
+        <Logger name="collidingempires.server.ingame" level="TRACE" additivity="false">
+            <AppenderRef ref="Trace"/>
+        </Logger>
+
+        <Root level="ERROR">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Error"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,49 @@
+.dialog-pane{
+    -fx-background-color: #131B20;
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+}
+.dialog-pane > *.button-bar > *.container{
+    -fx-background-color: #131B20;
+}
+.dialog-pane > *.label.content{
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+.dialog-pane *.header-panel{
+    -fx-background-color: #131B20;
+}
+.dialog-pane *.header-panel *.label{
+    -fx-font-size: 18px;
+    -fx-font-style: normal;
+    -fx-fill: white;
+    -fx-text-fill: white;
+}
+.dialog-pane .button{
+    -fx-background-color: transparent;
+    -fx-background-image: url('/images/server_screen/btn_ok.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-content-display: graphic-only;
+    -fx-scale-x: 1.7;
+    -fx-scale-y: 1.7;
+    -fx-scale-z: 1.7;
+    -fx-translate-y: -15px;
+    -fx-translate-x: 20px;
+}
+
+.dialog-pane .button:hover{
+    -fx-effect: dropshadow( three-pass-box, grey, 10.0, 0.0, 0.0, 0.0);
+}
+
+.dialog-pane .button:cancel{
+    -fx-background-color: transparent;
+    -fx-background-image: url('/images/server_screen/btn_cancel.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-content-display: graphic-only;
+}
+
+.dialog-pane .text-field {
+    -fx-translate-y: -15px;
+}

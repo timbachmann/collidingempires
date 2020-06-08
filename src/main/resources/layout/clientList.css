@@ -1,0 +1,31 @@
+
+.list-cell:even {
+    -fx-background-color: #2e4558;
+    -fx-text-fill: white;
+    -fx-font-family: "Roboto Light";
+}
+
+.list-cell:odd {
+    -fx-background-color: #233340;
+    -fx-text-fill: white;
+    -fx-font-family: "Roboto Light";
+}
+
+.list-view {
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+}
+
+.list-cell:pressed {
+    -fx-background-color: #525f6c;
+}
+
+.list-view:default {
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+}
+
+.list-cell {
+    -fx-pref-height: 35;
+    -fx-font-size: 20;
+}

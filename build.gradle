@@ -1,0 +1,79 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'checkstyle'
+    id 'jacoco'
+}
+
+javafx {
+    version = "11.0.2"
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.media']
+}
+
+defaultTasks 'clean', 'run'
+
+group 'collidingempires'
+version '1.0.0'
+mainClassName = 'collidingempires.Main'
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/io.prometheus/simpleclient
+    implementation group: 'io.prometheus', name: 'simpleclient', version: '0.8.1'
+    implementation group: 'io.prometheus', name: 'simpleclient_httpserver', version: '0.8.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.+'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.+'
+    implementation 'org.openjfx:javafx-controls:11.0.2'
+    implementation 'org.openjfx:javafx-media:14'
+    implementation 'com.github.WilliamAHartman:Jamepad:1.4.0'
+    implementation 'uk.co.electronstudio.sdl2gdx:sdl2gdx:1.0.4'
+    testImplementation 'junit:junit:4.+'
+}
+
+test {
+    testLogging.showStandardStreams = true
+    testLogging.events "passed", "skipped", "failed", "standard_Out", "standard_Error"
+    beforeTest {
+        descriptor -> logger.lifecycle("Running test: " + descriptor)
+    }
+    onOutput {
+        descriptor, event -> logger.lifecycle("Test: " + descriptor + " produced out/err: " + event)
+    }
+}
+
+checkstyle {
+    toolVersion '7.8.1'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+checkstyleMain {
+    source = 'src/main/java'
+}
+checkstyleTest {
+    source = 'srx/test/java'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': mainClassName
+        )
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+tasks.register("build-cs108"){
+    group = 'build'
+    description = "Creates executable jar and javadoc"
+    dependsOn javadoc, jar
+}

@@ -1,0 +1,25 @@
+
+.list-cell:even {
+    -fx-background-color: #2e4558;
+    -fx-text-fill: white;
+}
+
+.list-cell:pressed {
+    -fx-background-color: #525f6c;
+}
+
+.list-cell:odd {
+    -fx-background-color: #233340;
+    -fx-text-fill: white;
+}
+
+.list-view {
+    -fx-border-color: transparent;
+    -fx-text-fill: white;
+    -fx-background-color: #2e4558;
+    -fx-prompt-text-fill: white;
+}
+
+.list-cell {
+    -fx-font-size: 28;
+}
